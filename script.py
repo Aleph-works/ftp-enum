@@ -2,6 +2,17 @@ import ftplib
 import argparse
 import multiprocessing
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 # Test Data
 # FTP_SERVER_URL = 'ftp.be.debian.org'
 # DOWNLOAD_DIR_PATH = '/pub/linux/kernel/v5.x/'
@@ -47,9 +58,9 @@ def ftp_brute_force(server, username, password):
         print(f"Testing -> f{username}:{password}")
         response = ftp.login(username,password)
         if "230" in response and "granted" in response:
-            print(f"Cracked {username}:{password}")
+            print(bcolors.OKGREEN+f"Cracked {username}:{password}"+bcolors.ENDC)
     except Exception as E:
-        print('Error : '+str(E))
+        print(bcolors.WARNING+'Error : '+str(E)+bcolors.ENDC)
 
 
 if __name__ == '__main__':
