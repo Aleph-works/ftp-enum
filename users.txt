@@ -1,4 +1,5 @@
+anonymous
 anon
 root
 admin
-anonymous
+newftpuser

